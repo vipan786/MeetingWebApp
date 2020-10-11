@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Meeting App</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
+		<link rel = "icon" type="image/png" href ="https://img.icons8.com/material-sharp/24/000000/administrator-male.png" />
+	</head>
+
+	<body>
+		<div class="ui fixed inverted menu">
+			<div class="container">
+				<div class="header item"><i class="users alternate icon"></i>Meeting Site</div>
+
+				<%  if(!currentUser){%>
+
+				<a href="/register" class="item"><i class="sign in alternate alternate alternate icon"></i>SignUp</a>
+				<a href="/login" class="item"><i class="user alternate icon"></i>Login</a>
+				<%}  else{%>
+					<a href="/" class="item"><i class="home alternate icon"></i>Home</a>
+					<a href="/meetings/<%=currentUser.id%>/new" class="item"><i class="pencil alternate alternate icon"></i>Create</a>
+				<a href="#" class="item"><i class="user alternate icon"></i><b ><%=currentUser.username%></b></a>
+				<a href="/logout" class="item"><i class="power off alternate icon"></i>Logout</a>
+				<%}%>
+
+			</div>
+		</div>
+

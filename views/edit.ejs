@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<div class=" ui main text container segment">
+
+    <div class="ui huge header">Edit Meeting</div>
+
+    <form style="display: inline;" class="ui form" action="/meetings/<%=new_data._id%>?_method=PUT" method="post">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="title" value="<%=new_data.title%>" required/>
+        </div>
+        <div class="field">
+            <label>Time</label>
+            <input type="datetime-local" name="timing" value="<%=new_data.timing%>" required/>
+        </div>
+        <div class="field">
+            <label>With</label>
+            <input type="text" name="withw" value="<%=new_data.withw%>" required />
+        </div>
+        <input  class="ui primary big inverted button" type="submit" value="Edit"  />
+
+
+    </form>
+
+</div>
+
+
+<%- include('partials/footer') %>
