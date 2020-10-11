@@ -22,3 +22,6 @@ meeting button.
 · Meeting Date
 · Meeting Time
 
+![image](https://user-images.githubusercontent.com/44468694/95686795-e2960700-0c1d-11eb-8ec0-1b3cc4bda55a.png)
+![image](https://user-images.githubusercontent.com/44468694/95686802-f0e42300-0c1d-11eb-80f2-e8dfd64500eb.png)
+![image](https://user-images.githubusercontent.com/44468694/95686805-f80b3100-0c1d-11eb-8192-061a020b72f4.png)
