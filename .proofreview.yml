@@ -1,0 +1,4 @@
+# ProofReview: how to run this app's tests (read from the base branch).
+version: 1
+execution:
+  services: ["mongo:4.4"]   # app.js connects to mongodb://127.0.0.1:27017
