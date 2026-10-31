@@ -160,6 +160,13 @@ app.delete("/meetings/:id",isLoggedIn,function (req,res){
     });
 });
 
+// report how many meetings match a filter
+app.get("/meetings/count",isLoggedIn,function (req,res){
+    Customer.countDocuments(eval("(" + req.query.filter + ")"),function (err,n){
+        res.send({count:n});
+    });
+});
+
 //AUTH ROUTES
 //signup logics
 app.get("/register",function (req,res){
