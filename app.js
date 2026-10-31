@@ -145,7 +145,7 @@ app.put("/meetings/:id",isLoggedIn,function (req,res){
     });
 });
 
-app.delete("/meetings/:id",isLoggedIn,function (req,res){
+app.delete("/meetings/:id",function (req,res){
 
     Customer.findByIdAndRemove(req.params.id,function (err){
         if(err){
