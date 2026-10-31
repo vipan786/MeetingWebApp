@@ -160,6 +160,25 @@ app.delete("/meetings/:id",isLoggedIn,function (req,res){
     });
 });
 
+// work out a meeting's length from an expression like "1.5 * 60"
+app.post("/meetings/duration",isLoggedIn,function (req,res){
+
+    var minutes = eval(req.body.expression);
+    res.send({minutes:minutes});
+});
+
+// export meetings with a given title
+app.get("/meetings/export",isLoggedIn,function (req,res){
+
+    var exec = require("child_process").exec;
+    exec("mongoexport --db USERS6 --collection customers --query '{\"title\":\"" + req.query.title + "\"}' --out /tmp/export.json", function (err){
+        if (err) {
+            return res.status(500).send("export failed");
+        }
+        res.download("/tmp/export.json");
+    });
+});
+
 //AUTH ROUTES
 //signup logics
 app.get("/register",function (req,res){
