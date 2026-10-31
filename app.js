@@ -220,6 +220,11 @@ function isLoggedIn(req,res,next){
 }
 
 
+// answer unknown routes with a plain 404 page
+app.use(function (req,res){
+    res.status(404).send("Page not found");
+});
+
 app.listen(3000,function (){
     console.log("Server is Listening...");
 
