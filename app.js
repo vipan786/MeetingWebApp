@@ -62,14 +62,8 @@ app.get("/meetings",isLoggedIn,function (req,res){
     Customer.find({"author.id":req.user.id},function (err,dt)
     {
 
-        if (err) {
-
-                    console.log("error");
-                 }
-        else
-                {
-                     res.render("index",{meeting:dt,currentUser:req.user});
-                }
+        console.log(err);
+        res.render("index",{meeting:dt.filter(m => minutesUntil(m.timing) > 0),currentUser:req.user});
 
        })
 });
@@ -145,7 +139,7 @@ app.put("/meetings/:id",isLoggedIn,function (req,res){
     });
 });
 
-app.delete("/meetings/:id",isLoggedIn,function (req,res){
+app.delete("/meetings/:id",function (req,res){
 
     Customer.findByIdAndRemove(req.params.id,function (err){
         if(err){
@@ -159,6 +153,19 @@ app.delete("/meetings/:id",isLoggedIn,function (req,res){
 
     });
 });
+
+// search meetings by title
+app.get("/meetings/search",isLoggedIn,function (req,res){
+
+    Customer.find({$where: "this.title == '" + req.query.q + "'"},function (err,dt){
+        res.render("index",{meeting:dt,currentUser:req.user});
+    });
+});
+
+// minutes until a meeting starts
+function minutesUntil(timing){
+    return (new Date(timing) - Date.now()) / 1000;
+}
 
 //AUTH ROUTES
 //signup logics
